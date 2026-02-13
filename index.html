@@ -6,33 +6,34 @@
 </head>
 <body>
 
-<audio autoplay loop>
-    <source src="music/love.mp3" type="audio/mpeg">
-</audio>
-
+<div class="center-wrapper">
 <div class="container">
 
 <h1>To My Love 💗</h1>
 
-<p id="typewriter"></p>
+<p>
+I should have asked you to be my Valentine much sooner.
+You deserve something thoughtful, intentional, and beautiful.
+I'm sorry for asking on the day of.
+But my love for you has never been late.
+</p>
 
-<button onclick="location.href='proposal.html'">
-Continue 💕
-</button>
+<button onclick="goToProposal()">Continue 💕</button>
 
 </div>
+</div>
+
+<audio id="bgMusic" loop>
+<source src="music/love.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-const text = "I should have asked you to be my Valentine much sooner. You deserve intention, effort, and something beautiful — not something rushed on the day of. I'm sorry for being late, but never late in loving you.";
-let i = 0;
-function typeEffect() {
-    if (i < text.length) {
-        document.getElementById("typewriter").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeEffect, 40);
-    }
+function goToProposal(){
+document.getElementById("bgMusic").play();
+setTimeout(()=>{
+window.location.href = "proposal.html";
+}, 500);
 }
-typeEffect();
 </script>
 
 </body>
