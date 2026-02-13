@@ -1,36 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>For My Love 💕</title>
 <link rel="stylesheet" href="style.css">
+<style>
+body {
+    background: linear-gradient(135deg,#ffd6e8,#ffb3d9);
+    font-family: 'Poppins', sans-serif;
+}
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 10px 50px rgba(255,0,128,0.2);
+}
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #ff1a75;
+}
+.gif-container img {
+    width: 120px;
+    margin: 0 15px;
+    vertical-align: middle;
+}
+button {
+    margin-top:30px;
+    background: linear-gradient(45deg,#ff4d88,#ff1a75);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 40px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    transition:0.3s;
+}
+button:hover {
+    transform: scale(1.1);
+    box-shadow:0 0 25px rgba(255,0,128,0.8);
+}
+.pulse {
+    animation: pulseGlow 1.5s infinite;
+}
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px rgba(255,0,128,0.4); }
+    50% { box-shadow: 0 0 35px rgba(255,0,128,0.9); }
+    100% { box-shadow: 0 0 10px rgba(255,0,128,0.4); }
+}
+.typing {
+  display:inline-block;
+  border-right: 2px solid #ff1a75;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  animation: blink 0.7s step-end infinite;
+}
+@keyframes blink { 50% { border-color: transparent; } }
+</style>
 </head>
 <body>
 
-<div class="center-wrapper">
 <div class="container">
-
 <h1>Hey Lavinia 💗</h1>
 
-<p>
-I know I should have asked you sooner to be my Valentine…  
-You deserve a day full of love, planning, and cuteness — not just a last-minute question.  
-</p>
+<p id="apologyText" class="typing"></p>
 
-<p>
-I’m sorry for asking on the day itself, but my feelings for you have been here, steady, and always true. 💕
-</p>
-
-<!-- Cute GIFs -->
-<div style="margin:30px 0;">
-<img src="images/bubu.gif" alt="Bubu" style="width:120px; margin-right:20px;">
-<img src="images/dudu.gif" alt="Dudu" style="width:120px;">
+<div class="gif-container">
+<img src="images/bubu.gif" alt="Bubu">
+<img src="images/dudu.gif" alt="Dudu">
 </div>
-
-<p>But today, I hope I can make it up with something special… 💖</p>
 
 <button onclick="goToProposal()" class="pulse">Continue 💌</button>
-
-</div>
 </div>
 
 <audio id="bgMusic" loop>
@@ -38,13 +82,27 @@ I’m sorry for asking on the day itself, but my feelings for you have been here
 </audio>
 
 <script>
+// Typing effect
+const apologyText = "I know I should have asked you sooner to be my Valentine…\nYou deserve a day full of love, planning, and cuteness — not just a last-minute question.\n\nI’m sorry for asking on the day itself, but my feelings for you have been here, steady, and always true. 💕";
+let indexA=0;
+function typeApology(){
+  if(indexA < apologyText.length){
+    document.getElementById("apologyText").innerHTML += apologyText.charAt(indexA);
+    indexA++;
+    setTimeout(typeApology,35);
+  }
+}
+typeApology();
+
 function goToProposal(){
-document.getElementById("bgMusic").play();
-setTimeout(()=>{
-window.location.href="proposal.html";
-},500);
+  document.getElementById("bgMusic").play();
+  setTimeout(()=>{
+    window.location.href="proposal.html";
+  },500);
 }
 </script>
 
 </body>
 </html>
+
+
