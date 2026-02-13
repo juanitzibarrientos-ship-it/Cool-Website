@@ -1,158 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Question 💖</title>
-<link rel="stylesheet" href="style.css">
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<style>
-
-/* Proposal specific styling */
-
-.proposal-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-}
-
-.name-reveal {
-    font-size: 3.5rem;
-    font-family: 'Playfair Display', serif;
-    opacity: 0;
-    animation: fadeIn 2s ease forwards;
-}
-
-.question {
-    font-size: 1.8rem;
-    margin: 20px 0 40px;
-    opacity: 0;
-    animation: fadeIn 2s ease forwards;
-    animation-delay: 1.5s;
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-.buttons {
-    display: flex;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-#yesBtn {
-    background: linear-gradient(45deg, #ff4d88, #ff1a75);
-    box-shadow: 0 0 20px rgba(255, 0, 128, 0.6);
-    transition: all 0.3s ease;
-}
-
-#yesBtn:hover {
-    box-shadow: 0 0 40px rgba(255, 0, 128, 1);
-}
-
-#noBtn {
-    transition: all 0.3s ease;
-}
-
-.final-screen {
-    animation: fadeIn 1.5s ease forwards;
-}
-
-</style>
+    <title>The Question 💗</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
-
 <body>
 
-<div class="proposal-container">
+<h1>Lavinia 💖</h1>
+<h2>Will You Be My Valentine?</h2>
 
-    <!-- Name Reveal -->
-    <div class="name-reveal">Lavinia 💖</div>
+<img id="gif"
+src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnRkZHB6a2k2ZzJ1c3pxdWQ2b2ZrZnJtdG9rMnYxN3VxN2x3eG1sYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ICOgUNjpvO0PC/giphy.gif"
+width="200">
 
-    <!-- Cute Dudu / Bubu vibe GIF -->
-    <img src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif"
-         width="220"
-         style="margin: 20px 0; border-radius:20px; box-shadow:0 0 20px white;">
+<br>
 
-    <!-- Question -->
-    <div class="question">
-        Will you be my Valentine?
-    </div>
-
-    <!-- Buttons -->
-    <div class="buttons">
-        <button id="yesBtn" onclick="pressYes()">YES 💕</button>
-        <button id="noBtn" onclick="pressNo()">No 😢</button>
-    </div>
-
-</div>
+<button id="yesBtn" onclick="yes()">YES 💕</button>
+<button id="noBtn" onclick="no()">No 😢</button>
 
 <script>
-
 let noCount = 0;
-let yesSize = 18;
+let size = 18;
 
-const phrases = [
-"Are you sure, Lavinia? 🥺",
+const messages = [
+"Are you sure Lavinia? 🥺",
 "Really sure? 😭",
 "Think again please 💗",
-"I’ll be sad love… 🥹",
-"You don’t mean that 😔",
-"Please? 💕",
-"Okay but YES is better 😭"
+"Don’t break my heart 😔",
+"I’ll cry... 🥹",
+"Please love?",
+"You don’t mean that 💔",
+"Click YES instead 💕"
 ];
 
-function pressNo() {
-
+function no() {
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
 
-    // Change text
-    noBtn.innerText = phrases[noCount % phrases.length];
+    noBtn.innerText = messages[noCount % messages.length];
     noCount++;
 
-    // Grow YES smoothly
-    yesSize += 6;
-    yesBtn.style.fontSize = yesSize + "px";
-    yesBtn.style.padding = (15 + noCount*2) + "px " + (40 + noCount*4) + "px";
-
-    // Move NO gently
-    noBtn.style.position = "relative";
-    noBtn.style.left = (Math.random()*80 - 40) + "px";
-    noBtn.style.top = (Math.random()*20 - 10) + "px";
+    size += 10;
+    yesBtn.style.fontSize = size + "px";
+    yesBtn.style.padding = (15 + noCount*3) + "px " + (35 + noCount*5) + "px";
 }
 
-function pressYes() {
-
+function yes() {
     document.body.innerHTML = `
-    <div class="proposal-container final-screen">
-        <h1 style="font-size:3.5rem;">She Said Yes 😭💖</h1>
-        <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
-             width="250"
-             style="border-radius:20px; margin:20px 0;">
-        <p style="font-size:1.4rem; max-width:600px;">
-        You just made me the happiest person alive, Lavinia.
-        Thank you for choosing me.
-        I promise to make this Valentine’s special.
-        💕
-        </p>
-    </div>
+    <h1>SHE SAID YES 😭💖</h1>
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="250">
+    <h2>You just made me the happiest person alive, Lavinia 💕</h2>
     `;
 
-    confetti({
-        particleCount: 300,
-        spread: 140,
-        origin: { y: 0.6 }
-    });
+    confetti({particleCount:250,spread:120});
 }
-
 </script>
 
 </body>
 </html>
+
+</html>
+
