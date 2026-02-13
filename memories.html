@@ -1,82 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Memories 💕</title>
+<title>Our Memories 💗</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section class="section">
+<div class="container">
 
-<h1>Our Beautiful Memories 💗</h1>
-<p style="margin-bottom:40px; font-size:18px;">
-Every photo, every video… a piece of us.
-</p>
+<h1>Our Beautiful Memories 💕</h1>
 
 <div class="gallery">
 
-    <!-- HERO IMAGE (CENTER ATTENTION) -->
-    <img src="images/pic1.jpg"
-         class="hero"
-         onclick="openMedia(this.src,'image')"
-         alt="Our Best Memory">
+<img src="images/pic1.jpg" class="spotlight" onclick="openModal(this.src)">
 
-    <!-- Remaining 20 Images -->
-    <img src="images/pic2.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic3.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic4.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic5.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic6.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic7.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic8.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic9.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic10.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic11.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic12.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic13.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic14.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic15.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic16.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic17.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic18.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic19.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic20.jpg" onclick="openMedia(this.src,'image')" alt="">
-    <img src="images/pic21.jpg" onclick="openMedia(this.src,'image')" alt="">
+<script>
+for(let i=2;i<=21;i++){
+document.write(`<img src="images/pic${i}.jpg" onclick="openModal(this.src)">`);
+}
+</script>
 
-    <!-- 5 VIDEOS -->
-    <video src="videos/vid1.mp4"
-           onclick="openMedia(this.src,'video')"></video>
-
-    <video src="videos/vid2.mp4"
-           onclick="openMedia(this.src,'video')"></video>
-
-    <video src="videos/vid3.mp4"
-           onclick="openMedia(this.src,'video')"></video>
-
-    <video src="videos/vid4.mp4"
-           onclick="openMedia(this.src,'video')"></video>
-
-    <video src="videos/vid5.mp4"
-           onclick="openMedia(this.src,'video')"></video>
+<video src="videos/vid1.mp4" onclick="openModal(this.src)"></video>
+<video src="videos/vid2.mp4" onclick="openModal(this.src)"></video>
+<video src="videos/vid3.mp4" onclick="openModal(this.src)"></video>
+<video src="videos/vid4.mp4" onclick="openModal(this.src)"></video>
+<video src="videos/vid5.mp4" onclick="openModal(this.src)"></video>
 
 </div>
 
-<br><br>
-
-<a href="index.html">
-<button>Back to Start 💗</button>
-</a>
-
-</section>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <div id="lightboxContent"></div>
 </div>
 
-<script src="script.js"></script>
+<div id="modal" class="modal" onclick="closeModal()">
+<div id="modalContent"></div>
+</div>
+
+<script>
+function openModal(src) {
+const modal = document.getElementById("modal");
+const content = document.getElementById("modalContent");
+
+if(src.endsWith(".mp4")){
+content.innerHTML = `<video src="${src}" controls autoplay></video>`;
+}else{
+content.innerHTML = `<img src="${src}">`;
+}
+
+modal.style.display = "flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display = "none";
+}
+</script>
 
 </body>
 </html>
