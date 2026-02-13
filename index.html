@@ -19,16 +19,8 @@ body {
     text-align: center;
     box-shadow: 0 10px 50px rgba(255,0,128,0.2);
 }
-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    color: #ff1a75;
-}
-.gif-container img {
-    width: 120px;
-    margin: 0 15px;
-    vertical-align: middle;
-}
+h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #ff1a75; }
+.gif-container img { width: 120px; margin: 0 15px; vertical-align: middle; }
 button {
     margin-top:30px;
     background: linear-gradient(45deg,#ff4d88,#ff1a75);
@@ -40,25 +32,10 @@ button {
     cursor: pointer;
     transition:0.3s;
 }
-button:hover {
-    transform: scale(1.1);
-    box-shadow:0 0 25px rgba(255,0,128,0.8);
-}
-.pulse {
-    animation: pulseGlow 1.5s infinite;
-}
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 10px rgba(255,0,128,0.4); }
-    50% { box-shadow: 0 0 35px rgba(255,0,128,0.9); }
-    100% { box-shadow: 0 0 10px rgba(255,0,128,0.4); }
-}
-.typing {
-  display:inline-block;
-  border-right: 2px solid #ff1a75;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  animation: blink 0.7s step-end infinite;
-}
+button:hover { transform: scale(1.1); box-shadow:0 0 25px rgba(255,0,128,0.8); }
+.pulse { animation: pulseGlow 1.5s infinite; }
+@keyframes pulseGlow { 0% { box-shadow: 0 0 10px rgba(255,0,128,0.4); } 50% { box-shadow: 0 0 35px rgba(255,0,128,0.9); } 100% { box-shadow: 0 0 10px rgba(255,0,128,0.4); } }
+.typing { display:inline-block; border-right: 2px solid #ff1a75; white-space: pre-wrap; overflow-wrap: break-word; animation: blink 0.7s step-end infinite; }
 @keyframes blink { 50% { border-color: transparent; } }
 </style>
 </head>
@@ -74,7 +51,7 @@ button:hover {
 <img src="images/dudu.gif" alt="Dudu">
 </div>
 
-<button onclick="goToProposal()" class="pulse">Continue 💌</button>
+<button id="continueBtn" class="pulse">Continue 💌</button>
 </div>
 
 <audio id="bgMusic" loop>
@@ -94,15 +71,12 @@ function typeApology(){
 }
 typeApology();
 
-function goToProposal(){
-  document.getElementById("bgMusic").play();
-  setTimeout(()=>{
-    window.location.href="proposal.html";
-  },500);
-}
+// Start music on first click
+document.getElementById("continueBtn").addEventListener("click", ()=>{
+    document.getElementById("bgMusic").play();
+    setTimeout(()=>{ window.location.href="proposal.html"; },500);
+});
 </script>
 
 </body>
 </html>
-
-
