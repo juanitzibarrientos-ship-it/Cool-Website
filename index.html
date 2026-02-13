@@ -5,37 +5,24 @@
 <title>For My Love 💕</title>
 <link rel="stylesheet" href="style.css">
 <style>
-body {
-    background: linear-gradient(135deg,#ffd6e8,#ffb3d9);
-    font-family: 'Poppins', sans-serif;
-}
+/* Index-specific styling */
 .container {
     max-width: 800px;
     margin: 50px auto;
     padding: 40px;
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.7);
     backdrop-filter: blur(15px);
     border-radius: 30px;
     text-align: center;
     box-shadow: 0 10px 50px rgba(255,0,128,0.2);
 }
-h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: #ff1a75; }
-.gif-container img { width: 120px; margin: 0 15px; vertical-align: middle; }
-button {
-    margin-top:30px;
-    background: linear-gradient(45deg,#ff4d88,#ff1a75);
-    border: none;
-    padding: 15px 35px;
-    border-radius: 40px;
-    font-size: 18px;
-    color: white;
-    cursor: pointer;
-    transition:0.3s;
-}
+h1 { font-family:'Playfair Display',serif; font-size:3rem; color:#ff1a75; margin-bottom:25px; }
+.gif-container img { width:120px; margin:0 15px; vertical-align:middle; border-radius:15px; transition: transform 0.3s; }
+.gif-container img:hover { transform:scale(1.2); }
+button { margin-top:30px; background: linear-gradient(45deg,#ff4d88,#ff1a75); border:none; padding:15px 35px; border-radius:40px; font-size:18px; color:white; cursor:pointer; transition: all 0.3s; }
 button:hover { transform: scale(1.1); box-shadow:0 0 25px rgba(255,0,128,0.8); }
 .pulse { animation: pulseGlow 1.5s infinite; }
-@keyframes pulseGlow { 0% { box-shadow: 0 0 10px rgba(255,0,128,0.4); } 50% { box-shadow: 0 0 35px rgba(255,0,128,0.9); } 100% { box-shadow: 0 0 10px rgba(255,0,128,0.4); } }
-.typing { display:inline-block; border-right: 2px solid #ff1a75; white-space: pre-wrap; overflow-wrap: break-word; animation: blink 0.7s step-end infinite; }
+.typing { display:inline-block; border-right:2px solid #ff1a75; white-space: pre-wrap; overflow-wrap: break-word; animation: blink 0.7s step-end infinite; }
 @keyframes blink { 50% { border-color: transparent; } }
 </style>
 </head>
@@ -43,18 +30,18 @@ button:hover { transform: scale(1.1); box-shadow:0 0 25px rgba(255,0,128,0.8); }
 
 <div class="container">
 <h1>Hey Lavinia 💗</h1>
-
 <p id="apologyText" class="typing"></p>
-
 <div class="gif-container">
 <img src="images/bubu.gif" alt="Bubu">
 <img src="images/dudu.gif" alt="Dudu">
 </div>
-
 <button id="continueBtn" class="pulse">Continue 💌</button>
 </div>
 
-<audio id="bgMusic" loop>
+<!-- Floating hearts container -->
+<div id="hearts"></div>
+
+<audio id="bgMusic" autoplay loop muted>
 <source src="music/love.mp3" type="audio/mpeg">
 </audio>
 
@@ -71,12 +58,30 @@ function typeApology(){
 }
 typeApology();
 
-// Start music on first click
-document.getElementById("continueBtn").addEventListener("click", ()=>{
-    document.getElementById("bgMusic").play();
-    setTimeout(()=>{ window.location.href="proposal.html"; },500);
-});
-</script>
+// Music unmute on first click
+document.body.addEventListener('click', ()=>{
+  const music=document.getElementById('bgMusic');
+  music.muted=false;
+  music.play();
+},{once:true});
 
+// Continue button
+document.getElementById("continueBtn").addEventListener("click", ()=>{
+  window.location.href="proposal.html";
+});
+
+// Floating hearts animation
+function createHeart(){
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.fontSize = (10+Math.random()*20)+'px';
+  heart.style.animationDuration = (4+Math.random()*4)+'s';
+  heart.innerHTML='💖';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),8000);
+}
+setInterval(createHeart,300);
+</script>
 </body>
 </html>
