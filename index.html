@@ -1,24 +1,39 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>For My Love 💕</title>
-    <link rel="stylesheet" href="style.css">
+<title>For My Love 💕</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Hi Love 💗</h1>
-    <p>I made something special for you...</p>
+<audio autoplay loop>
+    <source src="music/love.mp3" type="audio/mpeg">
+</audio>
 
-    <div>
-        <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" width="250">
-    </div>
+<div class="container">
 
-    <div class="container">
-        <a href="letter.html"><button>Read This First 💌</button></a>
-        <a href="memories.html"><button>Our Memories 📸</button></a>
-        <a href="proposal.html"><button>Click This Last 💍</button></a>
-    </div>
+<h1>To My Love 💗</h1>
 
-    <script src="script.js"></script>
+<p id="typewriter"></p>
+
+<button onclick="location.href='proposal.html'">
+Continue 💕
+</button>
+
+</div>
+
+<script>
+const text = "I should have asked you to be my Valentine much sooner. You deserve intention, effort, and something beautiful — not something rushed on the day of. I'm sorry for being late, but never late in loving you.";
+let i = 0;
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 40);
+    }
+}
+typeEffect();
+</script>
+
 </body>
 </html>
