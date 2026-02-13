@@ -12,25 +12,21 @@
 
 <h1>Lavinia 💖</h1>
 
-<p style="font-size:1.5rem;">
-Will you be my Valentine?
-</p>
+<p style="font-size:1.5rem;">Will you be my Valentine?</p>
 
 <div style="margin-top:30px; position:relative;">
 <button id="yesBtn" class="pulse" onclick="pressYes()">YES 💕</button>
-<button id="noBtn" onclick="pressNo()" style="margin-left:15px;background:#ff99c8;">
-No 😢
-</button>
+<button id="noBtn" onclick="pressNo()" style="margin-left:15px;background:#ff99c8;">No 😢</button>
 </div>
 
 </div>
 </div>
 
 <script>
-let noCount = 0;
-let yesSize = 18;
+let noCount=0;
+let yesSize=18;
 
-const phrases = [
+const phrases=[
 "Are you sure? 🥺",
 "Really sure? 😭",
 "Think again 💗",
@@ -40,25 +36,24 @@ const phrases = [
 ];
 
 function pressNo(){
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
 
-noBtn.innerText = phrases[noCount % phrases.length];
+noBtn.innerText=phrases[noCount%phrases.length];
 noCount++;
 
-yesSize += 6;
-yesBtn.style.fontSize = yesSize + "px";
+yesSize+=6;
+yesBtn.style.fontSize=yesSize+"px";
 
-noBtn.style.position = "absolute";
-noBtn.style.left = Math.random()*200 - 100 + "px";
-noBtn.style.top = Math.random()*80 - 40 + "px";
+noBtn.style.position="absolute";
+noBtn.style.left=Math.random()*200-100+"px";
+noBtn.style.top=Math.random()*80-40+"px";
 }
 
 function pressYes(){
-confetti({ particleCount: 300, spread: 150 });
-
+confetti({particleCount:300,spread:150});
 setTimeout(()=>{
-window.location.href = "memories.html";
+window.location.href="memories.html";
 },1200);
 }
 </script>
