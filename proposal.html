@@ -1,9 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>The Question 💖</title>
+<meta charset="UTF-8">
+<title>Lavinia, Will You Be My Valentine? 💕</title>
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<style>
+/* Extra cute styling for proposal */
+body {
+    background: linear-gradient(135deg, #ffd6e8, #ffb3d9);
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 10px 50px rgba(255,0,128,0.2);
+    animation: fadeIn 1s ease;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #ff1a75;
+    margin-bottom: 25px;
+}
+
+p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+button {
+    background: linear-gradient(45deg,#ff4d88,#ff1a75);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 40px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255,0,128,0.8);
+}
+
+.pulse {
+    animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px rgba(255,0,128,0.4); }
+    50% { box-shadow: 0 0 35px rgba(255,0,128,0.9); }
+    100% { box-shadow: 0 0 10px rgba(255,0,128,0.4); }
+}
+
+/* GIFs container */
+.gif-container img {
+    width: 120px;
+    margin: 0 15px;
+    vertical-align: middle;
+}
+</style>
 </head>
 <body>
 
@@ -12,19 +78,23 @@
 
 <h1>Lavinia 💖</h1>
 
-<!-- Proposal Text -->
-<p style="font-size:1.5rem;">
+<p>
 Would you make me the happiest person alive…  
 and be my Valentine? 💕
 </p>
 
-<!-- Cute GIFs next to proposal -->
-<div style="margin:30px 0;">
-<img src="images/bubu.gif" alt="Bubu" style="width:100px; margin-right:15px;">
-<img src="images/dudu.gif" alt="Dudu" style="width:100px;">
+<!-- Cute GIFs -->
+<div class="gif-container">
+<img src="images/bubu.gif" alt="Bubu">
+<img src="images/dudu.gif" alt="Dudu">
 </div>
 
-<div style="margin-top:30px; position:relative;">
+<p style="margin-top:20px;">
+I promise hugs, laughter, silly moments, and endless love.  
+And maybe a few Bubu & Dudu adventures too! 🥰
+</p>
+
+<div style="margin-top:40px; position:relative;">
 <button id="yesBtn" class="pulse" onclick="pressYes()">YES 💖</button>
 <button id="noBtn" onclick="pressNo()" style="margin-left:15px;background:#ff99c8;">No 😢</button>
 </div>
@@ -33,38 +103,49 @@ and be my Valentine? 💕
 </div>
 
 <script>
-let noCount=0;
-let yesSize=18;
+let noCount = 0;
+let yesSize = 18;
 
-const phrases=[
+const phrases = [
 "Are you sure? 🥺",
 "Really sure? 😭",
 "Think again 💗",
 "I'll be sad love 🥹",
 "YES is cuter 👀",
-"Please? 💕"
+"Please? 💕",
+"Don't leave me hanging 😢",
+"Say yes? 🥰"
 ];
 
 function pressNo(){
-const noBtn=document.getElementById("noBtn");
-const yesBtn=document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
 
-noBtn.innerText=phrases[noCount%phrases.length];
-noCount++;
+    noBtn.innerText = phrases[noCount % phrases.length];
+    noCount++;
 
-yesSize+=6;
-yesBtn.style.fontSize=yesSize+"px";
+    // Make YES bigger
+    yesSize += 6;
+    yesBtn.style.fontSize = yesSize + "px";
 
-noBtn.style.position="absolute";
-noBtn.style.left=Math.random()*200-100+"px";
-noBtn.style.top=Math.random()*80-40+"px";
+    // Make NO dodge
+    noBtn.style.position = "absolute";
+    noBtn.style.left = Math.random() * 200 - 100 + "px";
+    noBtn.style.top = Math.random() * 80 - 40 + "px";
 }
 
 function pressYes(){
-confetti({particleCount:300,spread:150});
-setTimeout(()=>{
-window.location.href="memories.html";
-},1200);
+    // Confetti animation
+    confetti({
+        particleCount: 300,
+        spread: 150,
+        origin: { y: 0.6 }
+    });
+
+    // Redirect after confetti
+    setTimeout(()=>{
+        window.location.href = "memories.html";
+    },1200);
 }
 </script>
 
