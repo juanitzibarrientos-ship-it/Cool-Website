@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>Our Memories 💗</title>
 <link rel="stylesheet" href="style.css">
+<style>
+body { font-family:'Poppins',sans-serif; background: #ffe6f0; margin:0; }
+.container { max-width:1100px; margin:40px auto; text-align:center; padding:20px; }
+h1 { font-family:'Playfair Display',serif; font-size:3rem; color:#ff1a75; margin-bottom:20px; }
+.gallery { display:grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap:15px; }
+.gallery img, .gallery video { width:100%; height:150px; object-fit:cover; cursor:pointer; border-radius:15px; transition:0.3s; }
+.gallery img.spotlight { grid-column:span 2; grid-row:span 2; height:320px; }
+.gallery img:hover, .gallery video:hover { transform:scale(1.05); box-shadow:0 0 25px rgba(255,0,128,0.5);}
+.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:1000; }
+#modalContent img, #modalContent video { max-width:90%; max-height:90%; border-radius:20px; }
+.love-letter { margin-top:50px; background:rgba(255,255,255,0.6); padding:30px; border-radius:20px; text-align:left; line-height:1.6; }
+</style>
 </head>
 <body>
 
-<div class="center-wrapper">
 <div class="container">
-
 <h1>Our Beautiful Memories 💕</h1>
 
 <div class="gallery">
 
+<!-- Spotlight -->
 <img src="images/pic1.jpg" class="spotlight" onclick="openModal(this.src)">
+
 
 <img src="images/pic2.jpg" onclick="openModal(this.src)">
 <img src="images/pic3.jpg" onclick="openModal(this.src)">
@@ -43,82 +56,43 @@
 
 </div>
 
-<hr style="margin:60px 0; border:none; height:2px; background:linear-gradient(to right, transparent, #ff4d88, transparent);">
-
+<!-- Letter -->
 <div class="love-letter">
-
 <h1>A Letter To Lavinia 💗</h1>
-
 <p>My dearest Lavinia,</p>
-
-<p>
-I should have asked you sooner.
-Not because today isn’t special —
-but because you deserve to feel chosen every single day.
-</p>
-
-<p>
-I’m sorry for asking on the day of.
-You deserve planning.
-You deserve effort.
-You deserve intention.
-</p>
-
-<p>
-Every memory here reminds me how lucky I am.
-Lucky to laugh with you.
-Lucky to hold you.
-Lucky to call you mine.
-</p>
-
-<p>
-You make my world softer.
-Brighter.
-Warmer.
-More alive.
-</p>
-
-<p>
-Even if I was late asking…
-my love for you has never been late.
-It has always been steady.
-Certain.
-Yours.
-</p>
-
-<p style="margin-top:40px;font-weight:600;">
-Forever yours,<br>
-Your Love 💕
-</p>
-
+<p>I should have asked you sooner. Not because today isn’t special — but because you deserve to feel chosen every single day.</p>
+<p>I’m sorry for asking on the day of. You deserve planning, effort, and intention.</p>
+<p>Every memory here reminds me how lucky I am. Lucky to laugh with you, hold you, and call you mine.</p>
+<p>You make my world softer, brighter, warmer, more alive.</p>
+<p>Even if I was late asking… my love for you has never been late. It has always been steady, certain, yours.</p>
+<p style="margin-top:30px; font-weight:600;">Forever yours,<br>Your Love 💕</p>
 </div>
 
 </div>
-</div>
 
+<!-- Modal for zoom -->
 <div id="modal" class="modal" onclick="closeModal()">
 <div id="modalContent"></div>
 </div>
 
+<audio id="bgMusicMemories" loop>
+<source src="music/love.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-function openModal(src){
 const modal=document.getElementById("modal");
-const content=document.getElementById("modalContent");
-
-if(src.includes(".mp4")){
-content.innerHTML=`<video src="${src}" controls autoplay></video>`;
-}else{
-content.innerHTML=`<img src="${src}">`;
+const modalContent=document.getElementById("modalContent");
+function openModal(src){
+  if(src.includes(".mp4")){
+    modalContent.innerHTML=`<video src="${src}" controls autoplay></video>`;
+  } else {
+    modalContent.innerHTML=`<img src="${src}">`;
+  }
+  modal.style.display="flex";
+  document.getElementById("bgMusicMemories").play();
 }
-
-modal.style.display="flex";
-}
-
-function closeModal(){
-document.getElementById("modal").style.display="none";
-}
+function closeModal(){ modal.style.display="none"; }
 </script>
 
 </body>
 </html>
-
