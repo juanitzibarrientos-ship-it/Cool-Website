@@ -1,71 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>The Question 💖</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<title>The Question 💗</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-<h1>Lavinia 💗</h1>
-<h2>Will You Be My Valentine?</h2>
+<section class="section">
+<h1>Lavinia 💖</h1>
+<h2 style="margin-bottom:30px;">Will You Be My Valentine?</h2>
 
-<div>
-    <img id="proposalGif"
-    src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
-    width="250">
-</div>
+<img src="https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif" width="200">
 
-<br>
+<br><br>
 
-<button id="yesBtn" onclick="sayYes()">YES 💕</button>
-<button id="noBtn" onclick="handleNo()">No 😢</button>
+<button id="yesBtn" onclick="pressYes()">YES 💕</button>
+<button id="noBtn" onclick="pressNo()">No 😢</button>
 
-<script>
-let noClicks = 0;
-let yesSize = 18;
-
-const noMessages = [
-    "Are you sure, Lavinia? 🥺",
-    "Really sure? 😭",
-    "Think again please 💕",
-    "Don’t break my heart 💔",
-    "But I made this for you 😔",
-    "Please? 🥹",
-    "Last chance...",
-    "You don’t mean that 😢",
-    "Okay now press YES 💗"
-];
-
-function handleNo() {
-    const noBtn = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-
-    noBtn.innerText = noMessages[noClicks % noMessages.length];
-    noClicks++;
-
-    yesSize += 10;
-    yesBtn.style.fontSize = yesSize + "px";
-    yesBtn.style.padding = (15 + noClicks * 3) + "px " + (30 + noClicks * 5) + "px";
-
-    document.getElementById("proposalGif").src =
-    "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif";
-}
-
-function sayYes() {
-    document.body.innerHTML = `
-        <h1>SHE SAID YES 😭💖</h1>
-        <img src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif" width="300">
-        <h2>You just made me the happiest person alive, Lavinia 💕</h2>
-    `;
-
-    confetti({
-        particleCount: 250,
-        spread: 120,
-        origin: { y: 0.6 }
-    });
-}
-</script>
+</section>
 
 <script src="script.js"></script>
 </body>
