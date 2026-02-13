@@ -1,64 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>The Question 💗</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<title>The Question 💖</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
+<div class="container">
+
 <h1>Lavinia 💖</h1>
-<h2>Will You Be My Valentine?</h2>
 
-<img id="gif"
-src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnRkZHB6a2k2ZzJ1c3pxdWQ2b2ZrZnJtdG9rMnYxN3VxN2x3eG1sYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ICOgUNjpvO0PC/giphy.gif"
-width="200">
+<p style="font-size:1.5rem;">
+Will you be my Valentine?
+</p>
 
-<br>
+<div style="margin-top:30px;">
+<button id="yesBtn" class="pulse" onclick="pressYes()">YES 💕</button>
+<button id="noBtn" onclick="pressNo()" style="margin-left:15px;background:#ff99c8;">
+No 😢
+</button>
+</div>
 
-<button id="yesBtn" onclick="yes()">YES 💕</button>
-<button id="noBtn" onclick="no()">No 😢</button>
+</div>
 
 <script>
 let noCount = 0;
-let size = 18;
+let yesSize = 18;
 
-const messages = [
-"Are you sure Lavinia? 🥺",
+const phrases = [
+"Are you sure? 🥺",
 "Really sure? 😭",
-"Think again please 💗",
-"Don’t break my heart 😔",
-"I’ll cry... 🥹",
-"Please love?",
-"You don’t mean that 💔",
-"Click YES instead 💕"
+"Think again 💗",
+"I'll be sad love 🥹",
+"YES is cuter 👀",
+"Please? 💕"
 ];
 
-function no() {
+function pressNo() {
     const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
 
-    noBtn.innerText = messages[noCount % messages.length];
+    noBtn.innerText = phrases[noCount % phrases.length];
     noCount++;
 
-    size += 10;
-    yesBtn.style.fontSize = size + "px";
-    yesBtn.style.padding = (15 + noCount*3) + "px " + (35 + noCount*5) + "px";
+    yesSize += 6;
+    yesBtn.style.fontSize = yesSize + "px";
+
+    noBtn.style.position = "relative";
+    noBtn.style.left = (Math.random()*100 - 50) + "px";
 }
 
-function yes() {
-    document.body.innerHTML = `
-    <h1>SHE SAID YES 😭💖</h1>
-    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" width="250">
-    <h2>You just made me the happiest person alive, Lavinia 💕</h2>
-    `;
+function pressYes() {
 
-    confetti({particleCount:250,spread:120});
+    confetti({
+        particleCount: 300,
+        spread: 140,
+        origin: { y: 0.6 }
+    });
+
+    setTimeout(() => {
+        window.location.href = "memories.html";
+    }, 1500);
 }
 </script>
 
 </body>
 </html>
-
-</html>
-
